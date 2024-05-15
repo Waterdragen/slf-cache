@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"testing"
+	"time"
 
 	"github.com/waterdragen/slf-cache/v2/assert"
 	"github.com/waterdragen/slf-cache/v2/slf"
@@ -51,6 +52,7 @@ func TestCacheAllLayoutStats(t *testing.T) {
 	layoutDir, err := os.ReadDir("./layouts")
 	assert.Ok(err)
 
+	start := time.Now()
 	cachedStats := util.NewCachedStats()
 	for _, layoutDirEntry := range layoutDir {
 		layoutName := layoutDirEntry.Name()
@@ -75,6 +77,9 @@ func TestCacheAllLayoutStats(t *testing.T) {
 
 	assert.Ne(len(cachedStats), 0)
 	assert.Eq(len(cachedStats), len(layoutDir))
+
+	elapsed := time.Since(start)
+	fmt.Printf("Cache all layout stats took: %s\n", elapsed)
 }
 
 func TestReadAllCachedLayoutStats(t *testing.T) {

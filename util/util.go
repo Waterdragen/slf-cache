@@ -133,10 +133,10 @@ func AnalyzeTrigrams(layout *slf.Layout, corpus *[]Ngram) []float64 {
 	counter := make([]float64, MetricNum)
 
 	for _, key := range layout.Keys {
-		s := strings.ToLower(key.Char)
-		if s == "" {
+		if key.Char == "" {
 			continue
 		}
+		s := strings.ToLower(key.Char)
 		char := []rune(s)[0]
 		finger := uint16(key.Finger)
 		keyMap[char] = finger
