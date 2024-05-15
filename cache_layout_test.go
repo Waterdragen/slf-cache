@@ -32,7 +32,7 @@ func TestReadOneCachedLayoutStats(t *testing.T) {
 	assert.Eq(found, true)
 	stat, found := cachedStat.Stats["shai"]
 	unpackedStat := util.UnpackStats([]byte(stat))
-	assert.ApproxEq(unpackedStat[util.Sfb]/2, 0.084565)
+	assert.ApproxEq(unpackedStat[util.Sfb]/2, 0.056465)
 	assert.ApproxEq(unpackedStat[util.Alt], 0.18297)
 	assert.ApproxEq(unpackedStat[util.InRoll], 0.19032)
 	assert.ApproxEq(unpackedStat[util.OutRoll], 0.16129)

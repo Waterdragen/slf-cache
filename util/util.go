@@ -147,6 +147,9 @@ func AnalyzeTrigrams(layout *slf.Layout, corpus *[]Ngram) []float64 {
 		gram2 := trigram.chars[2]
 
 		if gram0 == ' ' || gram1 == ' ' || gram2 == ' ' {
+			continue
+		}
+		if gram0 == gram1 || gram1 == gram2 {
 			counter[Sfr] += trigram.freq
 			continue
 		}
